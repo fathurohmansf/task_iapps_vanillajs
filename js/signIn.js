@@ -16,9 +16,12 @@ document.addEventListener('DOMContentLoaded', () => {
     if (result.success){
       //hapus jadi ga kepake hanya notif aja
       //alert('success logined' + result.username);
+
+      localStorage.setItem('usernameLoggedIn', usernameByInput);
       return window.location.href = '../tasks.html';
     }
     else{
+      alert('Username tidak ditemukan')
       console.log(result.message);
     }
 

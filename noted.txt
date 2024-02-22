@@ -1,1 +1,4 @@
 apps name = task_iapps_vanillajs
+
+line 45 manageTask.js
+${task.isCompleted === fasle ?

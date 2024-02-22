@@ -27,10 +27,10 @@ const taskWrapper = document.getElementById('taskWrapper');
 const taskWrapperEmpty = document.getElementById('taskWrapperEmpty');
 
 function displayAllTasks(tasks = existingTasks){
-    //tasks = existingTasks
-    if(existingTasks.length === 0 ){
-    taskWrapper.className = 'hidden';
-    console.log('tidak ada task tersedia');
+    if(tasks.length === 0 ){
+        taskWrapperEmpty.className = 'flex justify-center items-center h-[420px] mx-auto';
+        taskWrapper.className = 'hidden';
+        console.log('tidak ada task tersedia');
     }
     else{
         taskWrapper.innerHTML = '';
@@ -96,7 +96,7 @@ function displayAllTasks(tasks = existingTasks){
         </div>
     </div>
     <div class="flex flex-row items-center gap-x-3">
-        <a href="#"
+        <a href="#" id="deleteTask-${task.id}"
             class="my-auto font-semibold text-taskia-red border border-taskia-red p-[12px_20px] h-12 rounded-full">Delete</a>
             ${task.isCompleted === false ?
             `<a href="#" id="completeTask-${task.id}"
@@ -113,6 +113,15 @@ function displayAllTasks(tasks = existingTasks){
 
         event.preventDefault();
         myTasks.completeTask(task.id);
+        const updateTasks = myTasks.getTasks();
+        displayAllTasks(updateTasks);
+        //console.log(task.id);
+    });
+
+    itemTask.querySelector(`#deleteTask-${task.id}`).addEventListener('click', function(event){
+
+        event.preventDefault();
+        myTasks.deleteTask(task.id);
         const updateTasks = myTasks.getTasks();
         displayAllTasks(updateTasks);
         //console.log(task.id);

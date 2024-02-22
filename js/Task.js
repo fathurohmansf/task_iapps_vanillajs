@@ -1,9 +1,9 @@
 class Task{
 
   constructor(){
-    this.tasks = this.getTask();
+    this.tasks = this.getTasks();
   }
-  getTask(){
+  getTasks(){
     return JSON.parse(localStorage.getItem('tasks')) || [];
   }
 
@@ -20,6 +20,19 @@ class Task{
     return {
       success: true,
     };
+  }
+
+  completeTask(taskId){
+    console.log(taskId);
+    const index = this.tasks.findIndex(task => task.id === taskId);
+
+    if(index !== -1){
+      this.tasks[index].isCompleted = true;
+      this.updateLocalStorage();
+    }
+  }
+  updateLocalStorage(){
+    localStorage.setItem('tasks', JSON.stringify(this.tasks));
   }
 
 }

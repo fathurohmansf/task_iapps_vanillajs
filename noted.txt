@@ -2,3 +2,12 @@ apps name = task_iapps_vanillajs
 
 line 45 manageTask.js
 ${task.isCompleted === fasle ?
+
+
+line 99 manageTask.js
+ ${task.isCompleted === true ?
+        `<a href="#" id="completeTask-${task.id}"
+            class="flex gap-[10px] justify-center items-center text-white p-[12px_20px] h-12 font-semibold bg-gradient-to-b from-[#977FFF] to-[#6F4FFF] rounded-full w-full border border-taskia-background-grey">Complete</a>`
+            :
+            `<a href="#" id="#completeTask-${task.id}" class="hidden"></a>`
+            }
